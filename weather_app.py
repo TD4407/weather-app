@@ -89,7 +89,7 @@ class WeatherApp(QWidget):
         print("***************")
         print("Weather fetched!")
 
-        api_key = "03b89f10aa92cf83d16977ca1a788e19"
+        api_key = "" # <---- ur api key here
 
         city = self.city_input.text()
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
@@ -230,7 +230,7 @@ class WeatherApp(QWidget):
         self.temperature_label.setStyleSheet("font-size: 75px;")
         temperature_k = data["main"]["temp"]
         temperature_f = (temperature_k * 9/5) - 459.67
-        temperature_c = temperature_k - 273.15  # Fixed: was 237.15
+        temperature_c = temperature_k - 273.15
 
         print(data["name"])
         print(f"{temperature_k:.0f}°K")
@@ -247,8 +247,8 @@ class WeatherApp(QWidget):
         print(weather_id)
 
         self.emoji_label.setText(self.get_weather_emoji(weather_id))
-        self.description_label.setText(weather_description)  # Fixed: was temperature_label
-
+        self.description_label.setText(weather_description)
+        
     @staticmethod
     def get_weather_emoji(weather_id):
         if 200 <= weather_id <= 232:
@@ -261,13 +261,13 @@ class WeatherApp(QWidget):
             return "❄️"
         elif 701 <= weather_id <= 741:
             return "🌫️"
-        elif weather_id == 762:  # Fixed: was =
+        elif weather_id == 762:
             return "🌋"
         elif weather_id == 771:
             return "💨"
-        elif weather_id == 781:  # Fixed: was =
+        elif weather_id == 781:
             return "🌪️"
-        elif weather_id == 800:  # Fixed: was =
+        elif weather_id == 800: 
             return "☀️"
         elif 801 <= weather_id <= 804:
             return "☁️"
